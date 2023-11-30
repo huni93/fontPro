@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
+//year=new Date().getFullYear() --> 기본값을 이렇게 넣을수도 있음
 function isLeapYear(year=new Date().getFullYear()) {
 	console.log(`매개변수 year:${year}`)
 	return(year%4===0)&&(year%100!==0)||(year%400===0)
