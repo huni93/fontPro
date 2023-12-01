@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+// foreach() 메소드는 배열이 갖고 있는 함수(메소드)로써 단순하게 배열 내부의 요소를 사용해서 콜백 함수를 호출
+// functon(value,index,arry) {}
+
+const numbers = [273,52,103,32,57]
+                //매개변수로 value,index,array를 갖는 콜백 함수를 사용  순서중요
+numbers.forEach(function(value,index,array) {  
+	console.log(`${index}번째 요소: ${value}`)
+})
+</script>
+</head>
+<body>
+
+</body>
+</html>

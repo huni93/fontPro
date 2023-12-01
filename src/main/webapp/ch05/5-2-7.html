@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//타이머 함수 
+//- 특정 시간마다 또는 특정 시간 이후에 콜백 함수를 호출할 수 있는 타이머(timer) 함수
+// setTimeout(함수,시간) : 특정 시간 후에 함수를 한 번 호출
+// setInterval(함수,시간) : 특정 시간마다 함수를 호출
+setTimeout(() => {
+	console.log('1초 후에 실행됩니다.')
+}, 1 *1000)
+
+let count = 0
+setInterval(() => {
+	console.log(`1초마다 실행됩니다(${count}번째)`)
+	count++
+},1*1000)  //웹 브라우저를 강제 종료해 멈춤
+</script>
+</head>
+<body>
+
+</body>
+</html>
