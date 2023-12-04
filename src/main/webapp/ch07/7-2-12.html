@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded',() => {
 	const link = document.querySelector('a')
 	link.addEventListener('click', (event) => {
 		if(!status) {
-			event.preventDefault()  //event 지우기
+			event.preventDefault()  //status 가 false가 아니면 링크의 기본 이미지를 제거
 		}
 	})
 })
