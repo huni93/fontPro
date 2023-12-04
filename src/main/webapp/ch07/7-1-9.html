@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
+//appendChild() 메소드는 문서 객체를 이동할 때도 사용
 document.addEventListener('DOMContentLoaded',() => {
 	//문서 객체 읽어들이고 생성하기
 	const divA=document.querySelector('#first')//id속성이 first인 div태그를 선택
@@ -14,11 +15,11 @@ document.addEventListener('DOMContentLoaded',() => {
 	//서로 번갈아 가면서 실행하는 함수를 구현한다
 	const toFirst=()=>{
 		divA.appendChild(h1) //h1을 divA에 추가
-		setTimeout(toSecond,1000) //1초뒤에 toSecond함수를 실
+		setTimeout(toSecond,1000) //1초뒤에 toSecond함수를 실행
 	}
 	const toSecond=()=>{
 		divB.appendChild(h1) //h1에 divB를추가
-		setTimeout(toFirst,3000) //10초뒤에 roFirst를 실
+		setTimeout(toFirst,3000) //10초뒤에 roFirst를 실행
 	}
 	toFirst()
 	})
