@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+h1 {
+  position: absolute;
+}
+
+p {
+  font-size: 30px;
+  color: red;
+}
+</style>
+<!-- 생성자 함수 -->
+<script>
+// MovingText의 생성자 함수
+const canvasWidth = 700;
+const canvasHeight = 500;
+function MovingText() {
+  // 위치와 속도 속성
+  this.x = nextRandomInteger(canvasWidth);
+  this.y = nextRandomInteger(canvasHeight);
+  this.vX = randomSpeed(10);
+  this.vY = randomSpeed(10);
+  // 문서 객체를 생성합니다.
+
+  this.h1 = document.createElement('h1');
+  this.h1.innerHTML = randomAlphabet();
+  document.body.appendChild(this.h1);
+
+  // 마우스 이벤트 리스너를 추가합니다.
+  this.h1.addEventListener('mouseover', () => {
+    // 알파벳을 삭제하고 카운트를 증가시킵니다.
+    this.removeAlphabet();
+  });
+}
+
+MovingText.prototype.move = function() {
+  if (this.x < 0 || this.x > canvasWidth) {
+    this.vX *= -1;
+  }
+  if (this.y < 0 || this.y > canvasHeight) {
+    this.vY *= -1;
+  }
+  this.x += this.vX;
+  this.y += this.vY;
+  this.h1.style.left = this.x + 'px';
+  this.h1.style.top = this.y + 'px';
+};
+
+MovingText.prototype.removeAlphabet = function() {
+  // 알파벳을 삭제하고 카운트를 증가시킵니다.
+  this.h1.innerHTML = '';
+  count++;
+  updateCount();
+};
+</script>
+<!-- 보조 함수 -->
+<script>
+// 랜덤한 정수를 생성합니다.
+function nextRandomInteger(limit) {
+  return Math.round(Math.random() * limit);
+}
+// 랜덤한 알파벳을 리턴하는 함수입니다.
+var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+function randomAlphabet() {
+  return alphabet.charAt(nextRandomInteger(25));
+}
+// 랜덤한 속도를 생성하는 함수입니다.
+function randomSpeed(maxSpeed) {
+  return Math.random() * maxSpeed * (Math.random() > 0.5 ? 1 : -1);
+}
+
+// 카운트 변수 및 업데이트 함수
+let count = 0;
+
+function updateCount() {
+  const countElement = document.querySelector('p');
+  countElement.innerHTML = 'Count: ' + count;
+  if (count === 100) {
+	    countElement.innerHTML = '끝';
+	  }
+}
+</script>
+<!-- window.onload -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  let movingTexts = [];
+  for (let i = 0; i < 100; i++) {
+    movingTexts.push(new MovingText());
+  } // 100개 객체 추가
+
+  setInterval(function() {
+    for (let i = 0; i < 100; i++) {
+      movingTexts[i].move();
+    }
+  }, 50);
+});
+</script>
+</head>
+<body>
+<p></p>
+</body>
+</html>

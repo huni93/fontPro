@@ -68,7 +68,12 @@
    
    const removeTodo = (key) => {
       //식별 키로 문서 객체를 제거합니다.
-      const item = document.querySelector(`[data-key = "${key}"`)
+      const checks = document.querySelectorAll('div>input')  //array
+      checks.forEach((check) => {
+    	  if(check.checked) {
+    		  todoList.removeChild(check.parentNode)
+    	  }
+      })
       todoList.removeChild(item)
    }//removeTodo end
    
