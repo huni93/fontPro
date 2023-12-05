@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+  .planet {
+    position: absolute;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: center;
+  }
+
+  #sun {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+
+  #earth {
+    width: 1px;
+    height: 1px;
+    border: solid 25px green;
+  }
+
+  #moon {
+    width: 1px;
+    height: 1px;
+    border: solid 10px yellow;
+  }
+
+  #mars {
+    width: 80px;
+    height: 80px;
+    background-color: #ff5733; /* Mars color */
+  }
+
+  #venus {
+    width: 60px;
+    height: 60px;
+    background-color: #e5cc80; /* Venus color */
+  }
+
+  #jupiter {
+    width: 150px;
+    height: 150px;
+    background-color: #d9bf77; /* Jupiter color */
+  }
+</style>
+<script>
+  window.onload = function() {
+    const sun = document.querySelector('#sun');
+    const earth = document.querySelector('#earth');
+    const moon = document.querySelector('#moon');
+    const mars = document.querySelector('#mars');
+    const venus = document.querySelector('#venus');
+    const jupiter = document.querySelector('#jupiter');
+
+    sun.style.position = 'absolute';
+    earth.style.position = 'absolute';
+    moon.style.position = 'absolute';
+    mars.style.position = 'absolute';
+    venus.style.position = 'absolute';
+    jupiter.style.position = 'absolute';
+
+    sun.style.left = '250px';
+    sun.style.top = '250px';
+
+    let earthAngle = 0;
+    let moonAngle = 0;
+    let marsAngle = 0;
+    let venusAngle = 0;
+    let jupiterAngle = 0;
+
+    setInterval(function() {
+      // 각도를 사용하여 행성의 좌표를 계산합니다.
+      let earthLeft = 300 + 175 * Math.cos(earthAngle);
+      let earthTop = 300 + 175 * Math.sin(earthAngle);
+
+      let moonLeft = earthLeft + 55 * Math.cos(moonAngle);
+      let moonTop = earthTop + 55 * Math.sin(moonAngle);
+
+      let marsLeft = 300 + 300 * Math.cos(marsAngle);
+      let marsTop = 300 + 300 * Math.sin(marsAngle);
+
+      let venusLeft = 300 + 120 * Math.cos(venusAngle);
+      let venusTop = 300 + 120 * Math.sin(venusAngle);
+
+      let jupiterLeft = 300 + 400 * Math.cos(jupiterAngle);
+      let jupiterTop = 300 + 400 * Math.sin(jupiterAngle);
+
+      // 위치를 이동합니다.
+      earth.style.left = earthLeft + 'px';
+      earth.style.top = earthTop + 'px';
+
+      moon.style.left = moonLeft + 'px';
+      moon.style.top = moonTop + 'px';
+
+      mars.style.left = marsLeft + 'px';
+      mars.style.top = marsTop + 'px';
+
+      venus.style.left = venusLeft + 'px';
+      venus.style.top = venusTop + 'px';
+
+      jupiter.style.left = jupiterLeft + 'px';
+      jupiter.style.top = jupiterTop + 'px';
+
+      // 각도를 변경합니다.
+      earthAngle += 0.1;
+      moonAngle += 0.3;
+      marsAngle += 0.05;
+      venusAngle += 0.2;
+      jupiterAngle += 0.02;
+    }, 200);
+  }
+</script>
+</head>
+<body>
+  <div id="sun" class="planet">태양</div>
+  <div id="earth" class="planet">지구</div>
+  <div id="moon" class="planet">달</div>
+  <div id="mars" class="planet">화성</div>
+  <div id="venus" class="planet">금성</div>
+  <div id="jupiter" class="planet">목성</div>
+</body>
+</html>
